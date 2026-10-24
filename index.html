@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)https://u8winning.com/ -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>U8 - APP下载</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Helvetica, "Microsoft YaHei", sans-serif;
+    background: #f5f5f7;
+    color: #1d1d1f;
+    overflow-x: hidden;
+  }
+  body {
+    background: linear-gradient(180deg, #f0edff 0%, #ffffff 30%);
+  }
+
+  /* ===== 顶部区域 ===== */
+  .hero {
+    position: relative;
+    padding: 50px 20px 40px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(168, 85, 247, 0.12), transparent 70%),
+      linear-gradient(180deg, #f5f0ff 0%, #ffffff 100%);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(90deg, rgba(168,85,247,0.05) 1px, transparent 1px),
+      linear-gradient(rgba(168,85,247,0.05) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: radial-gradient(ellipse 60% 60% at 50% 40%, #000 0%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 40%, #000 0%, transparent 80%);
+    pointer-events: none;
+  }
+  .logo-wrap {
+    position: relative;
+    width: 130px; height: 130px;
+    margin: 0 auto 24px;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 18px 40px rgba(124, 58, 237, 0.35), 0 0 0 1px rgba(255,255,255,0.4) inset;
+  }
+  .logo-wrap svg { width: 100%; height: 100%; display: block; }
+
+  .brand-title {
+    font-size: 38px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, #a855f7 0%, #7c3aed 50%, #a855f7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+  .brand-sub {
+    font-size: 16px;
+    color: #6b7280;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  /* ===== 下载按钮 ===== */
+  .actions {
+    padding: 0 20px;
+    margin-top: -10px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: relative;
+    z-index: 2;
+  }
+  .btn {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    padding: 18px 0;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
+    box-shadow: 0 12px 28px rgba(124, 58, 237, 0.4), 0 0 0 1px rgba(255,255,255,0.15) inset;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    letter-spacing: 2px;
+  }
+  .btn:active { transform: scale(0.97); box-shadow: 0 6px 16px rgba(124,58,237,0.4); }
+
+  /* ===== iOS 步骤 ===== */
+  .ios-header {
+    text-align: center;
+    margin-top: 40px;
+    padding: 0 20px;
+  }
+  .apple-icon {
+    width: 40px; height: 48px;
+    margin: 0 auto 12px;
+    fill: #a855f7;
+  }
+  .ios-title {
+    font-size: 24px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+  }
+
+  .steps {
+    padding: 30px 20px 60px;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .step { margin-bottom: 34px; }
+  .step-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .step-num {
+    flex-shrink: 0;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #a855f7, #7c3aed);
+    color: #fff;
+    font-size: 22px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 14px rgba(124,58,237,0.35);
+  }
+  .step-text {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1d1d1f;
+    line-height: 1.4;
+  }
+
+  /* iOS 手机框 */
+  .phone {
+    background: #f2f2f7;
+    border-radius: 36px;
+    padding: 14px;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.12), 0 0 0 8px #1d1d1f, 0 0 0 9px #3a3a3c;
+    overflow: hidden;
+    position: relative;
+  }
+  .phone-screen {
+    background: #fff;
+    border-radius: 24px;
+    overflow: hidden;
+  }
+  .status-bar {
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1d1d1f;
+  }
+  .status-bar .right { display: flex; gap: 5px; align-items: center; }
+  .nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px 10px;
+    border-bottom: 0.5px solid #c6c6c8;
+  }
+  .nav-bar .back { color: #007aff; font-size: 17px; display: flex; align-items: center; gap: 4px; }
+  .nav-bar .back svg { width: 12px; height: 20px; }
+  .nav-bar .nav-title { font-size: 17px; font-weight: 600; color: #1d1d1f; }
+  .nav-bar .placeholder { width: 60px; }
+
+  .row {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 0.5px solid #e5e5ea;
+    min-height: 50px;
+    gap: 12px;
+  }
+  .row .ico {
+    width: 30px; height: 30px;
+    border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; flex-shrink: 0;
+    font-size: 18px;
+  }
+  .row .label { flex: 1; font-size: 16px; color: #1d1d1f; }
+  .row .value { color: #8e8e93; font-size: 15px; }
+  .row .chev { color: #c7c7cc; font-size: 18px; }
+
+  .row.highlight {
+    background: rgba(0,122,255,0.06);
+    outline: 2.5px solid #007aff;
+    outline-offset: -2.5px;
+    border-radius: 8px;
+  }
+
+  /* 手指指示 */
+  .finger {
+    position: relative;
+    display: inline-block;
+  }
+  .finger::after {
+    content: "";
+    position: absolute;
+    right: -46px; top: 50%;
+    transform: translateY(-50%);
+    width: 40px; height: 50px;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 80'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23ffd9b3'/><stop offset='1' stop-color='%23f5b58a'/></linearGradient></defs><path fill='url(%23g)' stroke='%23d9966b' stroke-width='1.5' d='M14 6c-3 0-5 2-5 5v34c0 2 1.5 3 3 3h4c1.5 0 2.5-1 3-2.5V11c0-3-2-5-5-5zm10 0c-3 0-5 2-5 5v30c0 2 1.5 3 3 3h4c1.5 0 2.5-1 3-2.5V11c0-3-2-5-5-5zm10 0c-3 0-5 2-5 5v26c0 2 1.5 3 3 3h4c1.5 0 2.5-1 3-2.5V11c0-3-2-5-5-5zm10 0c-3 0-5 2-5 5v22c0 2 1.5 3 3 3h4c1.5 0 2.5-1 3-2.5V11c0-3-2-5-5-5zM54 30c-2 0-4 1.5-4 4v22c0 8-6 14-14 14H22c-8 0-14-6-14-14V40c0-3 2.5-4 4-4 2 0 3 1.5 3 3v22c0 4 3 7 7 7h14c4 0 7-3 7-7V34c0-2.5-2-4-4-4z'/></svg>") no-repeat center/contain;
+  }
+
+  /* Step3 信任页 */
+  .trust-box {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+  }
+  .trust-msg {
+    background: #f2f2f7;
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .trust-btn {
+    display: block;
+    text-align: center;
+    color: #007aff;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 14px;
+    background: rgba(0,122,255,0.06);
+    border: 2px solid #007aff;
+    border-radius: 10px;
+    margin-bottom: 14px;
+  }
+  .trust-dev {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-size: 14px;
+    color: #6b7280;
+  }
+  .trust-dev .verified { color: #34c759; font-weight: 600; }
+
+  /* Step4 弹窗 */
+  .modal-wrap {
+    background: rgba(0,0,0,0.35);
+    border-radius: 16px;
+    padding: 40px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal {
+    background: rgba(250,250,252,0.98);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 300px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  }
+  .modal-body { padding: 20px 18px; }
+  .modal-body p { font-size: 14px; color: #1d1d1f; line-height: 1.5; margin-bottom: 8px; }
+  .modal-body .sub { font-size: 13px; color: #6b7280; }
+  .modal-actions { border-top: 0.5px solid #c6c6c8; display: flex; }
+  .modal-actions button {
+    flex: 1; border: none; background: none;
+    padding: 12px; font-size: 17px; color: #ff3b30;
+    font-weight: 600; cursor: pointer;
+  }
+
+  /* 底部安全区 */
+  .footer { text-align: center; padding: 20px; color: #9ca3af; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<!-- 顶部品牌区 -->
+<div class="hero">
+  <div class="logo-wrap">
+    <img src="./imgs/logo.png" alt="U8" style="width:100%;height:100%;display:block;border-radius:28px;">
+  </div>
+  <h1 class="brand-title">互联网投注第一品牌</h1>
+  <p class="brand-sub">已超过30万用户入驻，赶快加入吧</p>
+</div>
+
+<!-- 下载按钮 -->
+<div class="actions">
+  <a href="https://app.jr886.com/app/game.apk" class="btn" download="">APP下载</a>
+  <a href="https://app.jr886.com/app/game.mobileconfig" class="btn" download="">苹果防掉签下载</a>
+</div>
+
+<!-- iOS 安装步骤 -->
+<div class="ios-header">
+  <svg class="apple-icon" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg">
+    <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"></path>
+  </svg>
+  <h2 class="ios-title">IOS企业级应用安装步骤</h2>
+</div>
+
+<div class="steps">
+
+  <!-- Step 1 -->
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div class="step-text">点击“设置”中的“通用”</div>
+    </div>
+    <div class="phone">
+      <div class="phone-screen">
+        <div class="status-bar">
+          <span>9:41</span>
+          <div class="right">
+            <svg width="17" height="11" viewBox="0 0 17 11"><path fill="currentColor" d="M1 7h2v3H1zM5 5h2v5H5zM9 3h2v7H9zM13 1h2v9h-2z"></path></svg>
+            <svg width="15" height="11" viewBox="0 0 15 11"><path fill="currentColor" d="M7.5 2C5 2 3 3 1.5 4.5L0 3C2 1 4.5 0 7.5 0s5.5 1 7.5 3l-1.5 1.5C12 3 10 2 7.5 2zm0 4C5.7 6 4.2 6.7 3 8l-1.5-1.5C3.4 4.9 5.3 4 7.5 4s4.1.9 6 2.5L12 8c-1.2-1.3-2.7-2-4.5-2zm0 4c-1 0-1.8.3-2.5.8L7.5 14l2.5-3.2C9.3 10.3 8.5 10 7.5 10z"></path></svg>
+            <svg width="25" height="12" viewBox="0 0 25 12"><rect x="0" y="0" width="21" height="11" rx="3" fill="none" stroke="currentColor" stroke-width="1"></rect><rect x="2" y="2" width="15" height="7" rx="1.5" fill="currentColor"></rect><rect x="22" y="3.5" width="2" height="4" rx="1" fill="currentColor"></rect></svg>
+          </div>
+        </div>
+        <div class="nav-bar">
+          <div class="placeholder"></div>
+          <div class="nav-title">设置</div>
+          <div class="placeholder"></div>
+        </div>
+        <div class="row">
+          <div class="ico" style="background:#34c759;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"></path></svg>
+          </div>
+          <div class="label">个人热点</div>
+          <div class="value">关闭</div>
+          <div class="chev">›</div>
+        </div>
+        <div class="row">
+          <div class="ico" style="background:#34c759;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="18" height="10" rx="2"></rect><path d="M22 11v2M6 10v4M10 10v4"></path></svg>
+          </div>
+          <div class="label">电池</div>
+          <div class="chev">›</div>
+        </div>
+        <div class="row">
+          <div class="ico" style="background:#007aff;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"></path></svg>
+          </div>
+          <div class="label">VPN</div>
+          <div class="value">已连接</div>
+          <div class="chev">›</div>
+        </div>
+        <div class="row highlight">
+          <div class="ico" style="background:#8e8e93;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          </div>
+          <div class="label"><span class="finger">通用</span></div>
+          <div class="chev">›</div>
+        </div>
+        <div class="row">
+          <div class="ico" style="background:#007aff;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"></path></svg>
+          </div>
+          <div class="label">辅助功能</div>
+          <div class="chev">›</div>
+        </div>
+        <div class="row">
+          <div class="ico" style="background:#007aff;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11h16M4 11l4-4M4 11l4 4M20 13H4M20 13l-4-4M20 13l-4 4"></path></svg>
+          </div>
+          <div class="label">操作按钮</div>
+          <div class="chev">›</div>
+        </div>
+        <div class="row">
+          <div class="ico" style="background:#1d1d1f;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M6 8h12M6 12h12M6 16h6"></path></svg>
+          </div>
+          <div class="label">待机显示</div>
+          <div class="chev">›</div>
+        </div>
+        <div class="row">
+          <div class="ico" style="background:#8e8e93;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </div>
+          <div class="label">控制中心</div>
+          <div class="chev">›</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div class="step-text">点击“VPN与设备管理”</div>
+    </div>
+    <div class="phone">
+      <div class="phone-screen">
+        <div class="status-bar">
+          <span>9:41</span>
+          <div class="right">
+            <svg width="17" height="11" viewBox="0 0 17 11"><path fill="currentColor" d="M1 7h2v3H1zM5 5h2v5H5zM9 3h2v7H9zM13 1h2v9h-2z"></path></svg>
+            <svg width="25" height="12" viewBox="0 0 25 12"><rect x="0" y="0" width="21" height="11" rx="3" fill="none" stroke="currentColor" stroke-width="1"></rect><rect x="2" y="2" width="15" height="7" rx="1.5" fill="currentColor"></rect><rect x="22" y="3.5" width="2" height="4" rx="1" fill="currentColor"></rect></svg>
+          </div>
+        </div>
+        <div class="nav-bar">
+          <div class="back">
+            <svg viewBox="0 0 12 20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 2 2 10l8 8"></path></svg>
+            设置
+          </div>
+          <div class="nav-title">通用</div>
+          <div class="placeholder"></div>
+        </div>
+        <div class="row" style="opacity:0.6;">
+          <div class="label">自动填充与密码</div>
+          <div class="chev">›</div>
+        </div>
+        <div class="row">
+          <div class="ico" style="background:#1d1d1f;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M6 8h12M6 12h12M6 16h6"></path></svg>
+          </div>
+          <div class="label">电视提供商</div>
+          <div class="chev">›</div>
+        </div>
+        <div class="row highlight">
+          <div class="ico" style="background:#8e8e93;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          </div>
+          <div class="label"><span class="finger">VPN与设备管理</span></div>
+          <div class="chev">›</div>
+        </div>
+        <div class="row">
+          <div class="ico" style="background:#8e8e93;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5l-8-3z"></path></svg>
+          </div>
+          <div class="label">法律与监管</div>
+          <div class="chev">›</div>
+        </div>
+        <div class="row">
+          <div class="ico" style="background:#8e8e93;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9M3 12l4-4M3 12l4 4"></path></svg>
+          </div>
+          <div class="label">传输或还原 iPhone</div>
+          <div class="chev">›</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 3 -->
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div class="step-text">选择对应的企业级APP点击“信任”</div>
+    </div>
+    <div class="phone">
+      <div class="phone-screen">
+        <div class="status-bar">
+          <span>9:41</span>
+          <div class="right">
+            <svg width="25" height="12" viewBox="0 0 25 12"><rect x="0" y="0" width="21" height="11" rx="3" fill="none" stroke="currentColor" stroke-width="1"></rect><rect x="2" y="2" width="15" height="7" rx="1.5" fill="currentColor"></rect><rect x="22" y="3.5" width="2" height="4" rx="1" fill="currentColor"></rect></svg>
+          </div>
+        </div>
+        <div class="nav-bar">
+          <div class="back">
+            <svg viewBox="0 0 12 20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 2 2 10l8 8"></path></svg>
+            返回
+          </div>
+          <div class="nav-title" style="font-size:15px;">设备管理</div>
+          <div class="placeholder"></div>
+        </div>
+        <div style="padding:16px;">
+          <div class="trust-box">
+            <div class="trust-msg">
+              来自开发者"Apple Development: xxxxx"的 App 在此 iPhone 上未受信任，在信任此开发者之前将不会运行。
+            </div>
+            <div class="trust-btn">
+              <span class="finger">信任"xxxxxx Co., Ltd."</span>
+            </div>
+            <div class="trust-dev">
+              <span>来自开发者 xxxxxx 的 APP</span>
+              <span class="verified">✓ 已验证</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 4 -->
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div class="step-text">点击“允许并重新启动”即可完成设置</div>
+    </div>
+    <div class="phone">
+      <div class="phone-screen">
+        <div class="status-bar">
+          <span>9:41</span>
+          <div class="right">
+            <svg width="25" height="12" viewBox="0 0 25 12"><rect x="0" y="0" width="21" height="11" rx="3" fill="none" stroke="currentColor" stroke-width="1"></rect><rect x="2" y="2" width="15" height="7" rx="1.5" fill="currentColor"></rect><rect x="22" y="3.5" width="2" height="4" rx="1" fill="currentColor"></rect></svg>
+          </div>
+        </div>
+        <div class="nav-bar">
+          <div class="back">
+            <svg viewBox="0 0 12 20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 2 2 10l8 8"></path></svg>
+            返回
+          </div>
+          <div class="nav-title" style="font-size:15px;">设备管理</div>
+          <div class="placeholder"></div>
+        </div>
+        <div style="padding:16px; filter: blur(1px) opacity(0.6);">
+          <div class="trust-box">
+            <div class="trust-msg">来自开发者"xxx"的 App 在此 iPhone 上未受信任…</div>
+            <div class="trust-btn">信任"xxxxxx Co., Ltd."</div>
+            <div class="trust-dev"><span>来自开发者 xxx</span><span class="verified">✓ 已验证</span></div>
+          </div>
+        </div>
+        <div class="modal-wrap" style="position:absolute; inset:0; border-radius:0;">
+          <div class="modal">
+            <div class="modal-body">
+              <p>允许来自"YI xxxxx Co., Ltd."的 App？</p>
+              <p class="sub">允许来自此开发者的 App 在 iPhone 上打开并访问你的数据。</p>
+              <p class="sub" style="margin-top:8px;">必须重新启动 iPhone 才能继续。</p>
+            </div>
+            <div class="modal-actions">
+              <button>允许并重新启动</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">© 2026 U8.COM · 无私彩日出亿U</div>
+
+
+
+</body></html>
